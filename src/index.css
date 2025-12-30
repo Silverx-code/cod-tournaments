@@ -2,33 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles for red and black theme */
+/* Base dark theme */
 @layer base {
   body {
-    @apply bg-black text-white;
+    @apply bg-black text-white antialiased;
   }
-  
+
   * {
-    @apply border-gray-800;
+    @apply border-gray-700;
   }
 }
 
+/* Custom components & utilities */
 @layer components {
-  /* Custom scrollbar */
+  /* Custom scrollbar (GREY, not red/blue) */
   ::-webkit-scrollbar {
     width: 10px;
   }
-  
+
   ::-webkit-scrollbar-track {
     background: #000000;
   }
-  
+
   ::-webkit-scrollbar-thumb {
-    background: #dc2626;
+    background: #4b5563; /* gray-600 */
     border-radius: 5px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
-    background: #991b1b;
+    background: #6b7280; /* gray-500 */
   }
+}
+
+/* ============================= */
+/* 🎮 HOME PAGE ANIMATIONS       */
+/* ============================= */
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.35;
+  }
+  90% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50px);
+    opacity: 0;
+  }
+}
+
+.animate-float {
+  animation: float linear infinite;
+}
+
+/* Shooting ping effect smoothing */
+.animate-ping {
+  animation-duration: 0.6s;
+}
+
+/* Disable text selection for immersive feel */
+.no-select {
+  user-select: none;
 }
